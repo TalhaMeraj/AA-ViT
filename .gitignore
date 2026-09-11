@@ -1,16 +1,39 @@
-# Ignore checkpoints directory
-checkpoints/
+cat > .gitignore << 'EOF'
+# Python bytecode
+__pycache__/
+*.pyc
 
-# Ignore data directory (if large datasets are stored here)
+# Checkpoints / model weights
+checkpoints/
+*.pth
+*.h5
+*.npz
+Janus_weights_100Epochs.zip
+Janus_weights_100Epochs/
+T1_T2_Flair_T1ce_nc_3_FullBrats2021_L1Tune_FFT_diffmap_RDEB_Edge_batch_24_ResVit/
+
+# SLURM job output logs
+*.out
+
+# Result/figure images at repo root
+Figure4_*.png
+errormap.png
+output.png
+ratings_boxplot*.png
+realT1ce.png
+
+# Debug/scratch dirs
+debug_features/
+fomo/
+old jobs/
+
+# Large scan/data files
+*.isyntax
+
+# Ignore data/results directories
 data/
 results/
-ResVit.zip
-# Ignore any files related to logs or temporary outputs
-*.txt
-*.log
 
-# Ignore weights and model files (if they are saved with extensions like .h5, .pth, etc.)
-*.h5
-*.pth
-
-"model/vit_checkpoint/imagenet21k/R50+ViT-B_16.npz" 
+# OS/editor cruft
+.DS_Store
+EOF
