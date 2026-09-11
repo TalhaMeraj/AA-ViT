@@ -1,0 +1,35 @@
+name: e_mamba2
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pyyaml
+  - setuptools
+  - wheel
+  - ninja
+  - cmake
+  - cudatoolkit=11.8
+
+  # PyTorch stack (all must match)
+  - pytorch=2.1.1=py3.10_cuda11.8*
+  - torchvision=0.16.1=py310_cu118*
+  - torchaudio=2.1.1=py310_cu118*
+
+  - pip:
+      - mamba-ssm==2.2.5
+      - causal-conv1d==1.1.1
+      - einops
+      - transformers
+      - tokenizers
+      - scipy
+      - matplotlib
+      - tqdm
+      - safetensors
+      - sentencepiece
+      - huggingface-hub

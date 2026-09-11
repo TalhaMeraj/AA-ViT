@@ -90,7 +90,9 @@ def get_scheduler(optimizer, opt):
     if opt.lr_policy == 'lambda':
         def lambda_rule(epoch):
             lr_l = 1.0 - max(0, epoch + 1 + opt.epoch_count - opt.niter) / float(opt.niter_decay + 1)
-            return lr_l
+            # my changes here
+            # return lr_l
+            return max(0, lr_l)
         scheduler = lr_scheduler.LambdaLR(optimizer, lr_lambda=lambda_rule)
     elif opt.lr_policy == 'step':
         scheduler = lr_scheduler.StepLR(optimizer, step_size=opt.lr_decay_iters, gamma=0.1)
@@ -122,6 +124,32 @@ def define_G(input_nc, output_nc, ngf, which_model_netG,vit_name,img_size,pre_tr
         print(vit_name)
         netG = residual_transformers.ResViT(residual_transformers.CONFIGS[vit_name],input_dim = input_nc,img_size=img_size, output_dim=1, vis=False)
         config_vit = residual_transformers.CONFIGS[vit_name]
+        # my changes here
+        # if pre_trained_resnet:
+        #     pre_trained_model = residual_transformers.Res_CNN(
+        #         residual_transformers.CONFIGS[vit_name], 
+        #         input_dim=input_nc, 
+        #         img_size=img_size, 
+        #         output_dim=1, 
+        #         vis=False
+        #     )
+        #     save_path = pre_trained_path
+        #     print("pre_trained_path: ", save_path)
+        #     pre_trained_model.load_state_dict(torch.load(save_path))
+
+        #     pretrained_dict = pre_trained_model.state_dict()
+        #     model_dict = netG.state_dict()
+
+        #     # Filter out keys that either do not exist or have mismatched shapes
+        #     filtered_dict = {k: v for k, v in pretrained_dict.items() 
+        #                     if k in model_dict and v.size() == model_dict[k].size()}
+
+        #     # Load the compatible weights only
+        #     model_dict.update(filtered_dict)
+        #     netG.load_state_dict(model_dict)
+
+        #     print(f"Residual CNN loaded with {len(filtered_dict)} compatible weights")
+
         if pre_trained_resnet:
             pre_trained_model = residual_transformers.Res_CNN(residual_transformers.CONFIGS[vit_name], input_dim= input_nc, img_size=img_size, output_dim=1, vis=False)
             save_path = pre_trained_path
@@ -152,7 +180,8 @@ def define_G(input_nc, output_nc, ngf, which_model_netG,vit_name,img_size,pre_tr
             # )
             print(config_vit.pretrained_path)
             
-            netG.load_from(weights=np.load(config_vit.pretrained_path))
+            netG.load_from(weights=np.load(config_vit.pretrained_path, allow_pickle=True))
+
     else:
         raise NotImplementedError('Generator model name [%s] is not recognized' % which_model_netG)
     if len(gpu_ids) > 0:
