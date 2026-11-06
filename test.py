@@ -15,6 +15,9 @@ if __name__ == '__main__':
     data_loader = CreateDataLoader(opt)
     dataset = data_loader.load_data()
     model = create_model(opt)
+    # Inference in eval mode (BatchNorm running statistics, no dropout); otherwise the generator
+    # runs in training mode for every slice processed before the first saliency pass.
+    model.netG.eval()
     visualizer = Visualizer(opt)
 
     # Create results webpage
