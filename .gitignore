@@ -1,21 +1,25 @@
-# Ignore checkpoints directory
+# Checkpoints and outputs
 checkpoints/
-
-# Ignore data directory (if large datasets are stored here)
-data/
 results/
 ResVit.zip
-# Ignore any files related to logs or temporary outputs
+
+# Dataset folders (NOT the data/ loader package)
+/Datasets/
+/datasets/
+
+# Logs and temporary outputs
 *.txt
+!requirements.txt
 *.log
 
-# Ignore weights and model files (if they are saved with extensions like .h5, .pth, etc.)
+# Weights and model files
 *.h5
 *.pth
+model/vit_checkpoint/**/*.npz
 
-"model/vit_checkpoint/imagenet21k/R50+ViT-B_16.npz"
-
-# Ignore Python bytecode caches and OS/editor cruft
+# Python bytecode, OS and editor files
 __pycache__/
 *.pyc
 .DS_Store
+.vscode/
+git-filter-repo

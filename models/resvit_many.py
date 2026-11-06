@@ -94,7 +94,7 @@ class ResViT_model(BaseModel):
 
         # load/define networks
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        # pretrained_path = "/home/fnu.talha/resvit/unet_b.ckpt"
+        # pretrained_path = "path/to/unet_b.ckpt"
         # pretrained_encoder = load_encoder(pretrained_path, in_ch=3, device=device)
         # self.encoder = load_encoder(pretrained_path, in_ch=1, device=device)
         # self.seg_net = load_segmentation_unet(pretrained_path, in_ch=1, device=device)

@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the AA-ViT paper."
+title: "AA-ViT: Anatomically Aware Vision Transformer with Structural and Frequency Guidance for Contrast Enhanced Brain MRI Synthesis"
+authors:
+  - {family-names: Meraj, given-names: Talha}
+  - {family-names: Flannery, given-names: Tom}
+  - {family-names: Cummins, given-names: Charlie}
+  - {family-names: Townend, given-names: Matt}
+  - {family-names: Booth, given-names: Thomas C.}
+  - {family-names: Crossley, given-names: Peter}
+  - {family-names: McCann, given-names: Michael}
+  - {family-names: Overton, given-names: Ian}
+  - {family-names: Unnikrishnan, given-names: Saritha}
+repository-code: "https://github.com/TalhaMeraj/AA-ViT"
+url: "https://arxiv.org/abs/2607.07553"
+identifiers:
+  - {type: doi, value: 10.48550/arXiv.2607.07553}
+preferred-citation:
+  type: conference-paper
+  title: "AA-ViT: Anatomically Aware Vision Transformer with Structural and Frequency Guidance for Contrast Enhanced Brain MRI Synthesis"
+  authors:
+    - {family-names: Meraj, given-names: Talha}
+    - {family-names: Flannery, given-names: Tom}
+    - {family-names: Cummins, given-names: Charlie}
+    - {family-names: Townend, given-names: Matt}
+    - {family-names: Booth, given-names: Thomas C.}
+    - {family-names: Crossley, given-names: Peter}
+    - {family-names: McCann, given-names: Michael}
+    - {family-names: Overton, given-names: Ian}
+    - {family-names: Unnikrishnan, given-names: Saritha}
+  collection-title: "Medical Image Understanding and Analysis (MIUA 2026), METIS Workshop"
+  year: 2026
