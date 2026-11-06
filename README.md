@@ -16,11 +16,6 @@ T. Meraj, T. Flannery, C. Cummins, M. Townend, T. C. Booth, P. Crossley, M. McCa
 
 ## Results
 
-<!-- TODO (Talha): paste the PSNR/SSIM table from the MIUA 2026 paper here. -->
-| Method | PSNR ↑ | SSIM ↑ |
-|---|---|---|
-| TODO | TODO | TODO |
-
 <img src="main_fig.png" width="800px"/>
 
 ## Dependencies
