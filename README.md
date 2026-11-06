@@ -1,7 +1,12 @@
 # AA-ViT
+
+[![arXiv](https://img.shields.io/badge/arXiv-2607.07553-b31b1b.svg)](https://arxiv.org/abs/2607.07553)
+[![MIUA 2026](https://img.shields.io/badge/MIUA%202026-METIS%20Workshop%20%C2%B7%20Oral-1f6feb.svg)](https://arxiv.org/abs/2607.07553)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%E2%89%A51.7-ee4c2c.svg)](https://pytorch.org/)
+
 Official PyTorch Implementation of **AA-ViT (Anatomically Aware Vision Transformer)**, a model for contrast-enhanced brain MRI synthesis built on top of the **ResViT** baseline. AA-ViT is described in our MIUA 2026 (METIS Workshop) paper:
 
-O. T. Meraj, T. Flannery, C. Cummins, M. Townend, T. C. Booth, P. Crossley, M. McCann, I. Overton and S. Unnikrishnan, "AA-ViT: Anatomically Aware Vision Transformer with Structural and Frequency Guidance for Contrast Enhanced Brain MRI Synthesis," accepted at MIUA 2026, METIS Workshop. Preprint: [arXiv:2607.07553](https://arxiv.org/abs/2607.07553).
+T. Meraj, T. Flannery, C. Cummins, M. Townend, T. C. Booth, P. Crossley, M. McCann, I. Overton and S. Unnikrishnan, "AA-ViT: Anatomically Aware Vision Transformer with Structural and Frequency Guidance for Contrast Enhanced Brain MRI Synthesis," accepted at MIUA 2026, METIS Workshop. Preprint: [arXiv:2607.07553](https://arxiv.org/abs/2607.07553).
 
 > This is a preprint citation — it will be updated to the camera-ready conference proceedings once published.
 
@@ -9,7 +14,18 @@ O. T. Meraj, T. Flannery, C. Cummins, M. Townend, T. C. Booth, P. Crossley, M. M
 
 *Overview of the proposed AA-ViT framework. (A) Generator–discriminator architecture for synthesizing contrast-enhanced MRI (CEMRI) from pre-contrast MRI inputs. (B) Residual Dense Edge Block (RDEB) for gradient-based edge feature representation. (C) Multi-component anatomically aware training objective.*
 
+## Results
+
+<!-- TODO (Talha): paste the PSNR/SSIM table from the MIUA 2026 paper here. -->
+| Method | PSNR ↑ | SSIM ↑ |
+|---|---|---|
+| TODO | TODO | TODO |
+
+<img src="main_fig.png" width="800px"/>
+
 ## Dependencies
+
+Exact versions used for the MIUA 2026 runs are in [requirements.txt](requirements.txt).
 
 ```
 python>=3.6.9
@@ -28,17 +44,21 @@ cuda=>11.2
 ```bash
 git clone https://github.com/TalhaMeraj/AA-ViT
 cd AA-ViT
+pip install -r requirements.txt
 ```
 
 ## Download pre-trained ViT models from Google
-* [Pre-trained ViT models](https://console.cloud.google.com/storage/vit_models/):
+* [Pre-trained ViT models](https://console.cloud.google.com/storage/vit_models/): the generator loads `model/vit_checkpoint/imagenet21k/R50+ViT-B_16.npz` (461 MB). It is downloaded from Google and is **not stored in this repository**. From the repo root:
 ```bash
-wget https://storage.googleapis.com/vit_models/imagenet21k/R50+ViT-B_16.npz &&
-mkdir ../model/vit_checkpoint/imagenet21k &&
-mv {MODEL_NAME}.npz ../model/vit_checkpoint/imagenet21k/R50-ViT-B_16.npz
+mkdir -p model/vit_checkpoint/imagenet21k
+wget -O model/vit_checkpoint/imagenet21k/R50+ViT-B_16.npz \
+    "https://storage.googleapis.com/vit_models/imagenet21k/R50%2BViT-B_16.npz"
 ```
 
 ## Dataset
+
+The data loader lives in [data/aligned_dataset.py](data/aligned_dataset.py). Datasets (for example BraTS 2021) must be downloaded separately under their own licence; this repository contains no imaging data.
+
 To reproduce the results reported in the paper, we recommend the following dataset processing steps:
 
 Sequentially select subjects from the dataset.
